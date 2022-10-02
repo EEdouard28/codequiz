@@ -1,0 +1,72 @@
+// Stores user response in variable // Creating a prompt with a string data type
+var tagName = prompt("Please enter an HTML Tag (ex. h1, h2, p, div):", "enter tag");
+
+// '!== means if not equal
+if (tagName !== "h1" && tagName !== "h2" && tagName !== "p" && tagName !== "div") {
+  alert("please enter a valid tag");
+} else {
+  //CREATE ELEMENT
+  // Creates element based on tag entered by user
+  var tag = document.createElement(tagName); 
+  //var tagDisplay = document.queryselector
+
+  // BUILD ELEMENT 
+  // Adds text content to created tag
+  tag.textContent = "This was made via prompts. It's a " + tagName + ".";
+  // Add a class, add an id, add some other attribute in order to build up element
+  
+  // PLACE THE ELEMENT 
+  // Appends tag as child of document body.. at the end ... 
+  document.body.appendChild(tag);
+  //"documenet.body" - takes you to the body of the document 
+  //document.body.prepend(tag); ... at the begining..doesnt include child
+  // choose a element such as body element 
+  //create element creates such as h1, p, section, div...HTML elements
+}
+
+//Activity 9 timer intervals section
+//DOM ELEMENTS - DOCUMENT OBJECT MODEL 
+//Selects element by class
+var timeEl = document.querySelector(".time");
+
+// Selects element by id
+var mainEl = document.getElementById("main");
+
+//DATA
+var secondsLeft = 10;
+
+//FUNCTIONS
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    //knocks off the seconds
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+
+    //
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval..built in function
+      clearInterval(timerInterval);
+      // Calls function to create and append image
+      sendMessage();
+    }
+
+  }, 1000); //1000 mili seconds aka every seconds 
+}
+
+// Function to create and append colorsplosion image
+function sendMessage() {
+  timeEl.textContent = " ";
+  var imgEl = document.createElement("img");
+  imgEl.setAttribute("src", "images/image_1.jpg");
+  mainEl.appendChild(imgEl);
+
+}
+
+// USER INTERACTIONS
+
+//INITIALIZATION
+setTime();
+
+
+  event.preventDefault(); // if there is a form involed must add
