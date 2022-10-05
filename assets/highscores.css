@@ -1,21 +1,17 @@
 body {
     color: #fff;
 }
-.container {
-    display: flex;
-    justify-content: center;
-}
+
 
 #highScores{
-    display:
     list-style: none;
     margin-bottom: 60px;
 } 
 
-/* .high-score {
+.high-score {
     font-size: 20px;
     margin-bottom: 5px;
-} */
+}
 
 #finalScore {
     margin-right: -200px;

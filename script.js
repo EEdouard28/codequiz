@@ -1,17 +1,19 @@
-//Declared variables
-const startBtn = document.querySelector('#startBtn');
+//Declared variables -
 const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
+const startBtn = document.querySelector('#startBtn');
 const scoreText = document.querySelector('#Score');
+
+
 let timer = document.querySelector("#timer");
 let currentQuestion = {};
 let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
-let availableQuestions = []
+let availableQuestions = [];
 
 //Questions array
-const questions = [ 
+let questions = [ 
     {
         question: "Commonly used data types DO Not Include?",
         choice1: "strings", 
@@ -44,24 +46,90 @@ const questions = [
         choice4: "c nameCar", 
         answer: "1",
     },
-]
+];
 
-const MAX_QUESTIONS = 5
-const SCORE_POINTS = 100
+const MAX_QUESTIONS = 5;
+const SCORE_POINTS = 100;
 
 
+//Code quiz begins with countdown function being called
+startGame = () => {
+    questionCounter = 0
+    score = 0
+    availableQuestions = [...questions]
+    getNewQuestion()
+    countdown();
+}
+
+// Score tracker
+getNewQuestion = () => {
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+    localStorage.setItem('mostRecentScore', score);
+
+   return window.location.assign("end.html");
+} 
+    //questions 
+
+    questionCounter++ 
+
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionsIndex];
+    question.innerText = currentQuestion.question;
+
+    // if (questionCounter === questions.length){
+    //     return window.location.assign('end.html') 
+    // }
+    
+    choices.forEach(choice => {
+        const number = choice.dataset["number"];  
+        choice.innerText = currentQuestion["choice" + number]; 
+});
+
+    availableQuestions.splice(questionsIndex, 1);
+
+    acceptingAnswers = true;
+}
+
+//multiple choice options
+choices.forEach(choice => {
+    choice.addEventListener("click", e => {
+        if(!acceptingAnswers) return; 
+
+        acceptingAnswers = false; 
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset["number"];
+
+        let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : 
+        "incorrect"
+
+        if(classToApply === "correct") {
+            incrementScore(SCORE_POINTS);
+        }
+        if (classToApply === "incorrect"){
+            secondsLeft = secondsLeft - 5
+            timer.textContent = secondsLeft
+        }
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 1000);
+    });
+});
 
 //Timer and seconds tracker
 let secondsLeft = 60;
 
 function countdown() {
     
-const setInterval = setInterval (function() {
-    secondsLeft--; 
+const countdownTimer = setInterval (function() {
+secondsLeft--; 
 timer.textContent = secondsLeft;
-if (seconds === 0) {
-    clearInterval(setInterval);
-    sendMessage();
+
+if (secondsLeft === 0) {
+    clearInterval(countdownTimer);
+    return window.location.assign("end.html");
 }
 }, 1000);
 }
@@ -69,65 +137,9 @@ function sendmessage(){
     timer.textContent =  "GameOver";
 }
 
-
-//Code quiz begins
-startGame = () => {
-    questionCounter = 0
-    score = 0
-    availableQuestions = [...questions]
-    getNewQuestion()
-}
-
-// Score tracker
-getNewQuestion = () => {
-    localStorage.setItem('mostRecentScore', score)
-
-    //questions 
-questionCounter++ 
-
-    currentQuestion = questions[questionCounter]
-    
-    if (questionCounter === questions.length){
-        return window.location.assign('end.html') 
-    }
-    question.innerText = currentQuestion.question
-
-    choices.forEach(choice => {
-        const number = choice.dataset[`number`]  
-        choice.innerText = currentQuestion[`choice${number}`] 
-})
-    acceptingAnswers = true
-}
-
-//multiple choice options
-choices.forEach(choice => {
-    choice.addEventListener(`click`, e => {
-        if(!acceptingAnswers) return 
-
-        acceptingAnswers = false; 
-        const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset[`number`];
-
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 
-        `incorrect`
-
-        if(classToApply === `correct`) {
-            score += 1
-            scoreText.innerText = score
-        }
-        if (classToApply === 'incorrect'){
-            secondsLeft = secondsLeft - 5
-            timer.textContent = secondsLeft
-        }
-        selectedChoice.parentElement.classList.add(classToApply)
-
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
-            getNewQuestion()
-        }, 1000)
-    } ) 
-})
-incrementScore = num => {
-    score += 1
-    scoreText.innerText = score
+incrementScore = () => {
+    score += 25;
+    scoreText.innerText = score;
 }; 
+
+startGame();
