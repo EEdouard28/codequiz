@@ -9,23 +9,23 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Nova Mono', monospace;
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 35px;
     color: #fff;
     margin-bottom: 35px;
 }
 
 h2 {
-    font-size: 30px;
-    margin-bottom: 28px;
+    font-size: 20px;
+    margin-bottom: 16px;
 }
 
 .container {
-    width: 100vw;
+    width: 75vw;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -61,10 +61,10 @@ h2 {
 /* styling of btn */
 .btn {
     font-size: 32px;
-    padding: 28px 0;
+    padding: 2px 0;
     width: 400px;
     text-align: center;
-    margin-bottom:12px;
+    margin-bottom:10px;
     text-decoration: none;
     color: rgb(9,113,121);
     background:rgb(27, 64, 66);

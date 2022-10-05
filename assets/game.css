@@ -1,10 +1,18 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-size: 18px;
+   font-family: 'Nova Mono', monospace;
+}
+
 body {
     color: #fff;
 }
 
 .choice-container {
     display: flex;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     width: 100%;
     border-radius: 4px;
     background:rgb(27, 64, 66);
@@ -52,22 +60,15 @@ body {
     text-align: center;
  }
 
-#progressBar {
-    width: 320px;
-    height: 48px;
-    border: 3px solid rgb(237, 150, 100);
-    margin-top: 32px;
-    border-radius: 50px;
-    overflow: hidden;
- }
- #progressBarFull {
-    height: 100%;
-    background-color: rgb(237, 150, 100);
-    width: 0%;
- }
 
- @media screen and (max-width: 768px) {
-    .choice-container {
-        min-width: 640px;
- }
-}
+/* tablet */
+@media screen  and (min-width: 500px) { 
+} 
+
+/* desktop */
+@media screen and (min-width: 900px) {
+} 
+
+/* mobile */
+/* @media screen and (min-width: 480px) {
+} */

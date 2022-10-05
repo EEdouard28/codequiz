@@ -1,14 +1,41 @@
 body {
     color: #fff;
 }
+.container {
+    display: flex;
+    justify-content: center;
+}
 
-#highScoresList {
+#highScores{
+    display:
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+} 
 
-}
-
-.high-score {
+/* .high-score {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+} */
+
+#finalScore {
+    margin-right: -200px;
+    margin-bottom: 600px;
+    justify-items: center;
+} 
+
+#home {
+    display: flex;
 }
+
+.btn {
+    font-size: 20px;
+    width: 200px;
+    text-align: center;
+    margin-bottom:6px;
+    text-decoration: none;
+    color: rgb(9,113,121);
+    background:rgb(27, 64, 66);
+    border-radius: 6px;
+    margin-right: -90px;
+}
+
