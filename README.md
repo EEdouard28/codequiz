@@ -20,6 +20,7 @@ Step 5 :You can check Highscore record to see your top 5 scores.
 
 ## Screenshot
 
+![Screenshot Capture - 2022-10-04 - 23-53-45](https://user-images.githubusercontent.com/111817163/193977992-c6ba3f6b-79e9-4846-9f06-e6bedd2c823c.png)
 
 ## Test
 Visit the webpage through the link: and try out the quiz.
