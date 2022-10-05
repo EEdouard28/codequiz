@@ -8,7 +8,7 @@ The webpage is easy for you to access through one link :
 Test your HTML,CSS, & JavaScript skills today. Play our free code quiz!
 
 ## Usage
-The link of the webpage is: 
+The link of the webpage is: https://eedouard28.github.io/code-quiz-/
 
 Step 1: Load the webpage.
 Step 2 :Click the "start" button to start the quiz and the timer.
