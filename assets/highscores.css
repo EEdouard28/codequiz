@@ -10,14 +10,14 @@ body {
 
 .high-score {
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 #finalScore {
-    margin-right: -200px;
-    margin-bottom: 600px;
-    justify-items: center;
-} 
+    font-size: 30px;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}  
 
 #home {
     display: flex;
