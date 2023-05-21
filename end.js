@@ -1,5 +1,7 @@
 const username = document.querySelector(`#username`);
 const saveScoreBtn = document.querySelector(`#saveScoreBtn`);
+saveScoreBtn.addEventListener('click', savemyScores);
+
 const finalScore = document.querySelector("#myfinalScore");
 const mostRecentScore = document.querySelector("#mostRecentScore");
 
@@ -12,15 +14,15 @@ finalScore.innerText = mostRecentScore
 
 
 username.addEventListener('keyup', () => {
-    myScoreBtn.disabled = !username.value
-})
+    myScoreBtn.disabled = !username.value;
+});
 
 savemyScores = e => {
 //const = e => {
     e.preventDefault()
 
     const score = {
-        score: mostRecentScore,
+        score: mostRecentScore.innerText,
         name: username.value
     };
 
